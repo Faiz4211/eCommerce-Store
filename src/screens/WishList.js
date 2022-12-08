@@ -16,8 +16,7 @@ const WishList = () => {
                 renderItem={({ item, index }) => {
                     return (
                         <View style={{
-                            width: wp('100%'),
-                            alignSelf: 'center'
+                            alignItems: 'center'
 
                         }}>
                             <CartItem

@@ -7,8 +7,8 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
     return (
         <TouchableOpacity
             style={{
-                // height: hp('30%'),
-                alignItems: 'center',
+                width: wp('90%'),
+                alignSelf: 'center',
                 marginLeft: wp(4),
                 backgroundColor: colors.white,
                 elevation: 5,
@@ -20,7 +20,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
         >
             <View>
                 <Image source={item.image} style={{
-                    height: hp('25%'),
+                    height: hp('15%'),
                     width: wp('90%'),
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
@@ -87,7 +87,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                             alignItems: 'center',
                             position: 'absolute',
                             top: 5,
-                            right: 10,
+                            right: 12,
                         }}
                         onPress={() => {
                             onRemoveFromWishlist()
@@ -96,7 +96,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
 
                         <Image style={{
                             height: hp('3.5%'),
-                            width: wp('7%'),
+                            width: wp('7.2%'),
                             tintColor: colors.purple,
                         }} source={require('../assets/images/heart_fill.png')} />
                     </TouchableOpacity>
@@ -110,7 +110,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                             alignItems: 'center',
                             position: 'absolute',
                             top: 5,
-                            right: 10,
+                            right: 12,
 
                         }}
                         onPress={() => {
@@ -119,7 +119,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                     >
                         <Image style={{
                             height: hp('3.5%'),
-                            width: wp('7%'),
+                            width: wp('7.2%'),
                             tintColor: colors.purple
                         }} source={require('../assets/images/heart.png')} />
                     </TouchableOpacity>

@@ -65,7 +65,7 @@ const CustomCard = ({ item, onAddToCart, onAddWishList }) => {
                 >
                     <Image style={{
                         height: hp('3.5%'),
-                        width: wp('6.9%'),
+                        width: wp('7.2%'),
                         tintColor: colors.purple
                     }} source={require('../assets/images/heart.png')} />
                 </TouchableOpacity>
