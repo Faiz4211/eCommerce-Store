@@ -70,9 +70,9 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
 
                             }}>
                             <Image style={{
-                                height: hp('3%'),
-                                width: wp('6%')
-                            }} source={require('../assets/images/removecart.png')} />
+                                height: hp('4%'),
+                                width: wp('7%')
+                            }} source={require('../assets/images/emptycart.png')} />
                         </TouchableOpacity>
                     )}
 

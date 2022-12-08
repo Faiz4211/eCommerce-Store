@@ -41,10 +41,10 @@ function TabStack() {
                             <View>
                                 <Ionicons name='md-home-sharp' size={30} color={colors.white} />
                                 <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={{
-                                    height: hp('3.3%'),
-                                    width: wp('7.3%'),
-                                    backgroundColor: colors.whitePrimary,
-                                    borderRadius: 10,
+                                    height: hp('3%'),
+                                    width: wp('6%'),
+                                    backgroundColor: colors.whiteSecondary,
+                                    borderRadius: 20,
                                     position: 'absolute',
                                     top: -2,
                                     marginLeft: wp(7)
@@ -52,7 +52,8 @@ function TabStack() {
                                     <Text style={{
                                         color: colors.black,
                                         textAlign: 'center',
-                                        fontWeight: '600'
+                                        fontSize: hp('2%'),
+                                        justifyContent: 'center'
                                     }}>{data.Reducers.length}</Text>
                                 </TouchableOpacity>
                             </View>
@@ -93,10 +94,10 @@ function TabStack() {
                             <View>
                                 <Ionicons name='heart' color={colors.white} size={30} />
                                 <View style={{
-                                    height: hp('3.3%'),
-                                    width: wp('7.3%'),
-                                    backgroundColor: colors.whitePrimary,
-                                    borderRadius: 10,
+                                    height: hp('3%'),
+                                    width: wp('6%'),
+                                    backgroundColor: colors.whiteSecondary,
+                                    borderRadius: 20,
                                     position: 'absolute',
                                     top: -2,
                                     marginLeft: wp(7)
@@ -104,7 +105,7 @@ function TabStack() {
                                     <Text style={{
                                         color: colors.black,
                                         textAlign: 'center',
-                                        fontWeight: '600'
+                                        justifyContent: 'center'
                                     }}>{data.Reducers2.length}</Text>
                                 </View>
                             </View>
