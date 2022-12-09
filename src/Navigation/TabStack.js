@@ -19,9 +19,8 @@ function TabStack() {
     const navigation = useNavigation();
     const data = useSelector(state => state);
 
-
     return (
-        <Tab.Navigator initialRouteName='Cart' screenOptions={{
+        <Tab.Navigator initialRouteName='Main2' screenOptions={{
             headerShown: false,
             tabBarShowLabel: false,
             tabBarInactiveTintColor: colors.white,

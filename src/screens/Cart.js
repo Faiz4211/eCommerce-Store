@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
@@ -10,7 +10,6 @@ import RazorpayCheckout from 'react-native-razorpay';
 
 const Cart = () => {
     const navigation = useNavigation()
-    const [cartList, setCartList] = useState([]);
     const cartData = useSelector(state => state.Reducers);
     const dispatch = useDispatch();
     return (
@@ -34,7 +33,7 @@ const Cart = () => {
                 />
             ) : (
                 <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                    <Text style={{ textAlign: 'center' }}>No Items Added in Cart. Please add it first</Text>
+                    <Text style={{ textAlign: 'center' }}>No Items Added in Cart. Please add it first!</Text>
                 </View>
             )}
             {cartData.length > 0 ? (<View>

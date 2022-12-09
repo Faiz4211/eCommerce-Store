@@ -16,6 +16,7 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
             {inputType == 'password' ? (<TextInput style={{
                 flex: 1,
                 paddingVertical: 0,
+                color: colors.lightgrey
             }}
                 placeholder={label}
                 value={value}
@@ -26,6 +27,7 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
                 <TextInput style={{
                     flex: 1,
                     paddingVertical: 0,
+                    color: colors.lightgrey
                 }}
                     placeholder={label}
                     value={value}

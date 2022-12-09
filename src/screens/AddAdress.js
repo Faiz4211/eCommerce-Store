@@ -20,11 +20,9 @@ const AddAdress = () => {
     return (
         <View style={{ flex: 1, }}>
             <View style={styles.InnerView}>
-                {/* <View style={styles.header}> */}
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btn}>
                     <Ionicons name='arrow-back' size={25} />
                 </TouchableOpacity>
-                {/* </View> */}
                 <InputField
                     value={city}
                     onChangeText={setCity}

@@ -1,40 +1,47 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import React from 'react';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
-import { addItemToCart, removeFromCart, removeFromWishlist } from '../redux/actions/Actions';
+import { addItemToCart, removeFromWishlist } from '../redux/actions/Actions';
 
 const WishList = () => {
-    const [cartList, setCartList] = useState([]);
     const cartData = useSelector(state => state.Reducers2);
     const dispatch = useDispatch();
+
     return (
         <View style={styles.container}>
-            <FlatList
-                data={cartData}
-                renderItem={({ item, index }) => {
-                    return (
-                        <View style={{
-                            alignItems: 'center'
+            {cartData.length > 0 ? (
+                <FlatList
+                    data={cartData}
+                    renderItem={({ item, index }) => {
+                        return (
+                            <View style={{
+                                alignItems: 'center'
 
-                        }}>
-                            <CartItem
-                                isWishList={'rfs'}
-                                onRemoveFromWishlist={() => {
-                                    dispatch(removeFromWishlist(index))
-                                }}
-                                item={item}
-                                onAddToCart={(x) => {
-                                    dispatch(addItemToCart(x))
-                                }}
-                            />
-                        </View>
+                            }}>
+                                <CartItem
+                                    isWishList={'rfs'}
+                                    onRemoveFromWishlist={() => {
+                                        dispatch(removeFromWishlist(index))
+                                    }}
+                                    item={item}
+                                    onAddToCart={(x) => {
+                                        dispatch(addItemToCart(x))
+                                    }}
+                                />
+                            </View>
 
 
-                    )
-                }}
-            />
+                        )
+                    }}
+                />
+
+            ) : (
+                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                    <Text style={{ textAlign: 'center' }}>No items found in WishList. Please add it first!</Text>
+                </View>
+            )
+            }
         </View>
     )
 }

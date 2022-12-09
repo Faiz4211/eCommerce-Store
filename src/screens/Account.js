@@ -6,6 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { AuthContext } from '../Context/AuthContext';
 import CustomButton from '../components/CustomButton';
 import CustomAdressButton from '../components/CustomAdressButton';
+import colors from '../globalStyles/GlobalColor';
 
 const Account = () => {
     const name = 'ABC USER'
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     name: {
+        color: colors.grey,
         marginTop: hp(2),
         fontSize: hp('2%'),
         fontWeight: '500',
@@ -76,6 +78,7 @@ const styles = StyleSheet.create({
     headText: {
         fontSize: hp('2.5%'),
         fontWeight: '600',
+        color: colors.grey,
     },
     btn: {
         width: wp('10%'),

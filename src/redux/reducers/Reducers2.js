@@ -15,4 +15,3 @@ const Reducers2 = (state = [], action) => {
     }
 }
 export default Reducers2;
-
