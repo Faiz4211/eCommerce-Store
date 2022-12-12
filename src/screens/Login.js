@@ -46,6 +46,7 @@ const Login = () => {
                         />
                     }
                 />
+                {loginerror ? <Text>{loginerror.error}</Text> : null}
 
                 <CustomButton
                     onPress={() => { login(email, password) }}
