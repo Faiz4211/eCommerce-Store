@@ -13,8 +13,9 @@ import { AuthContext } from '../Context/AuthProvider';
 
 const Signup = () => {
     const { register } = useContext(AuthContext)
-    const [name, setName] = useState();
+    const [Name, setName] = useState();
     const [email, setEmail] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
@@ -29,9 +30,9 @@ const Signup = () => {
                 </View>
                 <Text style={styles.SignupText}>Welcome to Signup!</Text>
                 <InputField
-                    value={name}
+                    value={Name}
                     onChangeText={setName}
-                    label={'Full Name'}
+                    label={'Name'}
                     icon={<Ionicons style={{
                         marginRight: wp(3),
                     }} name='person-outline' size={20} color={colors.lightgrey} />}
@@ -44,6 +45,15 @@ const Signup = () => {
                         marginRight: wp(3),
                     }} name='alternate-email' size={20} color={colors.lightgrey} />}
                     keyboardType="email-adress"
+                />
+                <InputField
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
+                    label={'Phone Number'}
+                    icon={<MaterialIcons style={{
+                        marginRight: wp(3),
+                    }} name='alternate-email' size={20} color={colors.lightgrey} />}
+                    keyboardType="numeric"
                 />
                 <InputField
                     value={password}

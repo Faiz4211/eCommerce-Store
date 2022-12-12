@@ -32,6 +32,7 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
                     placeholder={label}
                     value={value}
                     onChangeText={onChangeText}
+                    keyboardType={keyboardType}
                 />
             )}
 

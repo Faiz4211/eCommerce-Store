@@ -32,7 +32,6 @@ const Login = () => {
                         marginRight: wp(3),
                     }} name='alternate-email' size={20} color={colors.lightgrey} />}
                 />
-                {loginerror ? <Text>{loginerror}</Text> : null}
                 <InputField
                     value={password}
                     onChangeText={setPassword}
