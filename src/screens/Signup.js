@@ -1,26 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DatePicker from 'react-native-date-picker'
 import { useNavigation } from '@react-navigation/native';
 import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import SocialButton from '../components/SocialButton';
 import CustomNavLink from '../components/CustomNavLink';
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Signup = () => {
-    const { Signup } = useContext(AuthContext)
+    const { register } = useContext(AuthContext)
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
-    // const [date, setDate] = useState(new Date());
-    // const [open, setOpen] = useState(false);
-    // const [dobLabel, setDobLabel] = useState('Date of Birth')
+
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
@@ -76,35 +73,8 @@ const Signup = () => {
                     }
                     inputType="password"
                 />
-                {/* <View style={styles.CalendarView}>
-                    <Ionicons
-                        name="calendar-outline"
-                        size={20}
-                        color={colors.lightgrey}
-                        style={{ marginRight: wp(3) }}
-                    />
-                    <TouchableOpacity onPress={() => setOpen(true)}>
-                        <Text style={styles.DOBText}>{dobLabel}</Text>
-                    </TouchableOpacity>
-                </View>
-                <DatePicker
-                    modal
-                    open={open}
-                    date={date}
-                    mode={'date'}
-                    minimumDate={new Date('1980-01-01')}
-                    maximumDate={new Date('2022-01-01')}
-                    onConfirm={(date) => {
-                        setOpen(false)
-                        setDate(date)
-                        setDobLabel(date.toDateString())
-                    }}
-                    onCancel={() => {
-                        setOpen(false)
-                    }}
-                /> */}
                 <CustomButton
-                    onPress={() => { Signup(name, email, password, confirmPassword) }}
+                    onPress={() => register(email, password)}
                     buttonText={'Signup'}
                 />
                 <Text style={styles.RefText}>Or, Signup with ....</Text>

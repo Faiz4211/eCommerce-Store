@@ -9,13 +9,13 @@ import InputField from '../components/InputField';
 import CustomButton from '../components/CustomButton';
 import SocialButton from '../components/SocialButton';
 import CustomNavLink from '../components/CustomNavLink';
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Login = () => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const navigation = useNavigation();
-    // const { login } = useContext(AuthContext);
+    const { login, loginerror } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
@@ -32,6 +32,7 @@ const Login = () => {
                         marginRight: wp(3),
                     }} name='alternate-email' size={20} color={colors.lightgrey} />}
                 />
+                {loginerror ? <Text>{loginerror}</Text> : null}
                 <InputField
                     value={password}
                     onChangeText={setPassword}
@@ -46,9 +47,9 @@ const Login = () => {
                         />
                     }
                 />
+
                 <CustomButton
-                    // onPress={() => { login(email, password) }}
-                    onPress={() => navigation.navigate('Main')}
+                    onPress={() => { login(email, password) }}
                     buttonText={'Login'}
                 />
                 <Text style={styles.RefText}>Or, Login with ....</Text>

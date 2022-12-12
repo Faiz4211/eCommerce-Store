@@ -3,15 +3,15 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { AuthContext } from '../Context/AuthContext';
 import CustomButton from '../components/CustomButton';
 import CustomAdressButton from '../components/CustomAdressButton';
 import colors from '../globalStyles/GlobalColor';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Account = () => {
-    const name = 'ABC USER'
+    const { user, logout } = useContext(AuthContext)
+    console.log('This is user detail', user)
     const navigation = useNavigation();
-    const { logout } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
@@ -24,7 +24,7 @@ const Account = () => {
                 </View>
                 <View style={styles.ImageView}>
                     <Image style={styles.loginImage} source={require('../assets/images/userprofile.png')} />
-                    <Text style={styles.name}>{name}</Text>
+                    <Text style={styles.name}>{user.email}</Text>
                 </View>
                 <CustomAdressButton
                     onPress={() => navigation.navigate('Adress')}
@@ -40,7 +40,7 @@ const Account = () => {
                     marginTop: hp(4)
                 }}>
                     <CustomButton
-                        onPress={() => { logout() }}
+                        onPress={() => logout()}
                         buttonText={'Sign Out'}
                     />
                 </View>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         color: colors.grey,
         marginTop: hp(2),
         fontSize: hp('2%'),
-        fontWeight: '500',
     },
     header: {
         flexDirection: 'row',
