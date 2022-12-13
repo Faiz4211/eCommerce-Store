@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -10,6 +9,7 @@ import { useState } from 'react';
 import CustomButton from '../components/CustomButton';
 import { useDispatch } from 'react-redux';
 import { addAdress } from '../redux/actions/Actions';
+import { useNavigation } from '@react-navigation/native';
 
 const AddAdress = () => {
     const [city, setCity] = useState('');

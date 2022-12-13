@@ -8,9 +8,10 @@ import CustomAdressButton from '../components/CustomAdressButton';
 import colors from '../globalStyles/GlobalColor';
 import { AuthContext } from '../Context/AuthProvider';
 
+
 const Account = () => {
-    const { user, logout } = useContext(AuthContext)
-    console.log('This is user detail', user)
+    const { user, logout } = useContext(AuthContext);
+    console.log('This is user detail', user);
     const navigation = useNavigation();
 
     return (

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -15,7 +15,7 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const navigation = useNavigation();
-    const { login, loginerror } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
@@ -46,7 +46,6 @@ const Login = () => {
                         />
                     }
                 />
-                {loginerror ? <Text>{loginerror.error}</Text> : null}
 
                 <CustomButton
                     onPress={() => { login(email, password) }}

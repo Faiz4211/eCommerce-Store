@@ -6,7 +6,6 @@ import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import colors from '../globalStyles/GlobalColor';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useEffect } from 'react';
 import { removeAdress } from '../redux/actions/Actions';
 
 let addressList = [];

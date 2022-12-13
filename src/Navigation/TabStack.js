@@ -12,6 +12,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
+
 const Tab = createBottomTabNavigator();
 
 
@@ -37,8 +38,6 @@ function TabStack() {
                                 <Ionicons name='md-home-sharp' size={35} color={colors.white} />
                             </View>
                         )
-
-
                     }
 
                 }}
