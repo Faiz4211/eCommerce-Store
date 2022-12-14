@@ -13,7 +13,7 @@ import { AuthContext } from '../Context/AuthProvider';
 
 const Signup = () => {
     const { register } = useContext(AuthContext)
-    const [Name, setName] = useState();
+    const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [password, setPassword] = useState();
@@ -30,7 +30,7 @@ const Signup = () => {
                 </View>
                 <Text style={styles.SignupText}>Welcome to Signup!</Text>
                 <InputField
-                    value={Name}
+                    value={name}
                     onChangeText={setName}
                     label={'Name'}
                     icon={<Ionicons style={{

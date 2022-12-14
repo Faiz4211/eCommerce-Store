@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
 import colors from '../globalStyles/GlobalColor';
+import LottieView from 'lottie-react-native'
 
 const Splash = () => {
     const navigation = useNavigation();
@@ -12,9 +13,12 @@ const Splash = () => {
         }, 3000);
     }, [])
 
+
     return (
         <View style={styles.container}>
-            <Image style={styles.SplashImage} source={require('../assets/images/purplelogo.png')} />
+            <LottieView style={styles.SplashImage}
+                source={require('../assets/bag3.json')} autoPlay loop />
+            {/* <Image style={styles.SplashImage} source={require('../assets/images/purplelogo.png')} /> */}
         </View>
     )
 }
@@ -23,12 +27,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: colors.white
+        backgroundColor: colors.lightpurple
     },
     SplashImage: {
-        height: hp('40%'),
+        alignSelf: 'center',
+        height: hp('50%'),
         width: wp('100%'),
-    }
+    },
 })
 
 export default Splash;

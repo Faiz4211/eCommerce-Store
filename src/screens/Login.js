@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -44,6 +44,7 @@ const Login = () => {
                             color={colors.lightgrey}
                             style={{ marginRight: wp(3) }}
                         />
+
                     }
                 />
 
