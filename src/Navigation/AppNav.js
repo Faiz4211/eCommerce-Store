@@ -7,7 +7,6 @@ import TabStack from './TabStack';
 import { AuthContext } from '../Context/AuthProvider';
 import auth from '@react-native-firebase/auth';
 
-
 const AppNav = () => {
     const { user, setUser } = useContext(AuthContext);
     const [initializing, setInitializing] = useState(true);
@@ -16,11 +15,12 @@ const AppNav = () => {
         setUser(user)
         if (initializing) setInitializing(false)
     }
-
     useEffect(() => {
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
         return subscriber; // unsubscribe on unmount
     }, []);
+
+
 
     if (initializing) return
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -38,7 +38,8 @@ const AppNav = () => {
     // }
     return (
         <NavigationContainer >
-            {user ? <TabStack /> : <AuthStack />}
+            {user ?
+                <TabStack /> : <AuthStack />}
             {/* // {userToken !== null ? <TabStack /> : <AuthStack />} */}
         </NavigationContainer>
     )

@@ -12,13 +12,12 @@ import CustomNavLink from '../components/CustomNavLink';
 import { AuthContext } from '../Context/AuthProvider';
 
 const Signup = () => {
-    const { register } = useContext(AuthContext)
+    const { register, googleLogin } = useContext(AuthContext);
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
-
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
@@ -52,7 +51,7 @@ const Signup = () => {
                     label={'Phone Number'}
                     icon={<MaterialIcons style={{
                         marginRight: wp(3),
-                    }} name='alternate-email' size={20} color={colors.lightgrey} />}
+                    }} name='local-phone' size={20} color={colors.lightgrey} />}
                     keyboardType="numeric"
                 />
                 <InputField
@@ -88,7 +87,9 @@ const Signup = () => {
                     buttonText={'Signup'}
                 />
                 <Text style={styles.RefText}>Or, Signup with ....</Text>
-                <SocialButton />
+                <SocialButton
+                    onPress1={() => googleLogin()}
+                />
                 <CustomNavLink
                     NavText={'Already have an account?'}
                     onPress={() => navigation.navigate('Login')}

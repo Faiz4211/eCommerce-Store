@@ -1,13 +1,17 @@
 import React, { createContext, useState, useEffect } from "react";
 import auth from "@react-native-firebase/auth";
 import { ToastAndroid } from "react-native";
-
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState(null);
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: '395180905588-1i0440to9jhd8d9secdvlo78s43ahnd8.apps.googleusercontent.com',
+        });
+    })
 
     return (
         <AuthContext.Provider
@@ -40,6 +44,23 @@ export const AuthProvider = ({ children }) => {
                                 ToastAndroid.CENTER
                             );
                         }
+                    }
+                },
+
+                googleLogin: async () => {
+                    try {
+                        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+                        // Get the users ID token
+                        const { idToken } = await GoogleSignin.signIn();
+
+                        // Create a Google credential with the token
+                        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+                        // Sign-in the user with the credential
+                        await auth().signInWithCredential(googleCredential);
+                    }
+                    catch (googleLoginError) {
+                        console.log(googleLoginError)
                     }
                 },
 

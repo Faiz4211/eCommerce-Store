@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -15,8 +15,7 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const navigation = useNavigation();
-    const { login } = useContext(AuthContext);
-
+    const { login, googleLogin } = useContext(AuthContext);
     return (
         <View style={styles.container}>
             <View style={styles.InnerView}>
@@ -53,7 +52,10 @@ const Login = () => {
                     buttonText={'Login'}
                 />
                 <Text style={styles.RefText}>Or, Login with ....</Text>
-                <SocialButton />
+                <SocialButton
+                    onPress1={() => googleLogin()}
+                // onPress2={() => facebookLogin()}
+                />
                 <CustomNavLink
                     NavText={'New to the App?'}
                     onPress={() => navigation.navigate('Signup')}
