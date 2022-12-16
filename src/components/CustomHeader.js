@@ -1,9 +1,12 @@
-import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Switch } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 
-const CustomHeader = ({ headerText, ModeText }) => {
+const CustomHeader = ({ headerText }) => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
         <View
             style={{
@@ -27,7 +30,17 @@ const CustomHeader = ({ headerText, ModeText }) => {
                 {headerText}
             </Text>
 
-            <TouchableOpacity
+            <Switch
+                style={{
+                    marginRight: wp(5),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+                thumbColor={isEnabled ? colors.purple : "#f4f3f4"}
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+            />
+            {/* <TouchableOpacity
                 style={{
                     marginRight: wp(5),
                     justifyContent: 'center',
@@ -39,7 +52,7 @@ const CustomHeader = ({ headerText, ModeText }) => {
                     fontSize: hp('2%'),
                     color: colors.black,
                 }}>{ModeText}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }

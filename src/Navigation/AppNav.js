@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import AuthStack from './AuthStack';
 import colors from '../globalStyles/GlobalColor';
 import TabStack from './TabStack';
@@ -37,7 +37,7 @@ const AppNav = () => {
     //     )
     // }
     return (
-        <NavigationContainer >
+        <NavigationContainer>
             {user ?
                 <TabStack /> : <AuthStack />}
             {/* // {userToken !== null ? <TabStack /> : <AuthStack />} */}
