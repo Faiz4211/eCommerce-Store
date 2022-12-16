@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
             webClientId: '395180905588-1i0440to9jhd8d9secdvlo78s43ahnd8.apps.googleusercontent.com',
         });
     })
+    const [user, setUser] = useState(null);
 
     return (
         <AuthContext.Provider
