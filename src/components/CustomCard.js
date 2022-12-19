@@ -15,7 +15,8 @@ const CustomCard = ({ item, onAddToCart, onAddWishList }) => {
                 alignItems: 'center',
                 marginLeft: wp(4),
                 borderRadius: 20,
-                backgroundColor: backgroundStyle.backgroundColor
+                backgroundColor: backgroundStyle.backgroundColor,
+                elevation: 5
 
             }}
         >
