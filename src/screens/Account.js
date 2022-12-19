@@ -1,5 +1,5 @@
 import React, { useContext, } from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -7,28 +7,40 @@ import CustomButton from '../components/CustomButton';
 import CustomAdressButton from '../components/CustomAdressButton';
 import colors from '../globalStyles/GlobalColor';
 import { AuthContext } from '../Context/AuthProvider';
-
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Account = () => {
     const { user, logout } = useContext(AuthContext);
     console.log('This is user detail', user);
     const navigation = useNavigation();
-
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
-        <View style={styles.container}>
+        <View style={{ flex: 1, backgroundColor: backgroundStyle.backgroundColor }}>
             <View style={styles.InnerView}>
                 <View style={styles.header}>
-                    <Text style={styles.headText}>Profile</Text>
+                    <Text style={{
+                        fontSize: hp('2.5%'),
+                        fontWeight: '600',
+                        color: isDarkMode ? colors.white : colors.grey
+                    }}>Profile</Text>
                     <TouchableOpacity style={styles.btn}>
-                        <AntDesign name='setting' size={25} />
+                        <AntDesign name='setting' size={25} color={isDarkMode ? colors.white : colors.lightgrey} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ImageView}>
                     <Image style={styles.loginImage} source={require('../assets/images/userprofile.png')} />
-                    <Text style={styles.name}>{user.email}</Text>
+                    <Text style={{
+                        color: isDarkMode ? colors.white : colors.lightgrey,
+                        marginTop: hp(2),
+                        fontSize: hp('2.5%'),
+                        fontWeight: '600'
+                    }}>{user.email}</Text>
                 </View>
                 <CustomAdressButton
-                    onPress={() => navigation.navigate('Adress')}
+                    onPress={() => navigation.navigate('MyAdress')}
                     adressText={'My Adress'}
                 />
                 <CustomAdressButton
@@ -51,9 +63,6 @@ const Account = () => {
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     loginImage: {
         marginTop: hp(2),
         height: hp('25%'),
@@ -65,20 +74,13 @@ const styles = StyleSheet.create({
     ImageView: {
         alignItems: 'center'
     },
-    name: {
-        color: colors.grey,
-        marginTop: hp(2),
-        fontSize: hp('2%'),
-    },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     headText: {
-        fontSize: hp('2.5%'),
-        fontWeight: '600',
-        color: colors.grey,
+
     },
     btn: {
         width: wp('10%'),

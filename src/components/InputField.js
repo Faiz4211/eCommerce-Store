@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, TextInput } from 'react-native';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Text, TouchableOpacity, View, TextInput, useColorScheme } from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../globalStyles/GlobalColor';
 
 const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fieldButtonFunction, value, onChangeText }) => {
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
         <View style={{
             flexDirection: 'row',
-            borderBottomColor: colors.whitePrimary,
+            backgroundColor: backgroundStyle.backgroundColor,
+            borderBottomColor: isDarkMode ? colors.white : colors.whitePrimary,
             borderBottomWidth: 1,
             marginBottom: hp(4),
             alignItems: 'center'
@@ -16,9 +22,10 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
             {inputType == 'password' ? (<TextInput style={{
                 flex: 1,
                 paddingVertical: 0,
-                color: colors.lightgrey
+                color: isDarkMode ? colors.white : colors.lightgrey,
             }}
                 placeholder={label}
+                placeholderTextColor={isDarkMode ? colors.white : colors.lightgrey}
                 value={value}
                 onChangeText={onChangeText}
                 secureTextEntry
@@ -27,9 +34,10 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
                 <TextInput style={{
                     flex: 1,
                     paddingVertical: 0,
-                    color: colors.lightgrey
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                 }}
                     placeholder={label}
+                    placeholderTextColor={isDarkMode ? colors.white : colors.lightgrey}
                     value={value}
                     onChangeText={onChangeText}
                     keyboardType={keyboardType}
@@ -38,7 +46,7 @@ const InputField = ({ label, icon, inputType, keyboardType, fieldButtonLable, fi
 
             <TouchableOpacity onPress={fieldButtonFunction}>
                 <Text style={{
-                    color: colors.purple,
+                    color: isDarkMode ? colors.purple : colors.purple,
                     fontWeight: '700',
 
                 }}>{fieldButtonLable}</Text>

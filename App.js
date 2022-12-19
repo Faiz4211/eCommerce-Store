@@ -9,7 +9,7 @@ const App = () => {
     <Provider store={store}>
       <AppRoute />
     </Provider>
+
   )
 }
-
 export default App;

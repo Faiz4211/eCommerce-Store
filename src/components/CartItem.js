@@ -1,19 +1,23 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../globalStyles/GlobalColor';
 
 const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isWishList, onAddToCart }) => {
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
         <TouchableOpacity
             style={{
                 width: wp('90%'),
                 alignSelf: 'center',
                 marginLeft: wp(4),
-                backgroundColor: colors.white,
                 elevation: 5,
                 borderRadius: 20,
-                backgroundColor: colors.white,
+                backgroundColor: backgroundStyle.backgroundColor,
                 margin: 15,
 
             }}
@@ -27,7 +31,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                 }} />
                 <Text style={{
                     marginTop: hp(1), marginLeft: wp(4), fontSize: hp('2%'),
-                    color: colors.purple
+                    color: isDarkMode ? colors.purple : colors.purple
                 }}>{item.name}</Text>
 
                 <View style={{
@@ -40,7 +44,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                 }}>
                     <Text style={{
                         marginLeft: wp(4), fontSize: hp('2%'),
-                        color: colors.purple
+                        color: isDarkMode ? colors.purple : colors.purple
                     }}>{'₨ ' + item.price}</Text>
                     {isWishList ? (
                         <TouchableOpacity

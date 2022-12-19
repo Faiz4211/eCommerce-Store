@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 
 const SocialButton = ({ Image1, Image2, Image3, onPress1, onPress2, onPress3 }) => {
+    const isDarkMode = useColorScheme() === 'dark';
     return (
         <View style={{
             flexDirection: 'row',
@@ -13,7 +14,7 @@ const SocialButton = ({ Image1, Image2, Image3, onPress1, onPress2, onPress3 }) 
             <TouchableOpacity
                 onPress={onPress1}
                 style={{
-                    borderColor: colors.whiteSecondary,
+                    borderColor: isDarkMode ? colors.whiteSecondary : colors.whiteSecondary,
                     borderWidth: 2,
                     borderRadius: 10,
                     paddingHorizontal: wp(10),
@@ -36,7 +37,7 @@ const SocialButton = ({ Image1, Image2, Image3, onPress1, onPress2, onPress3 }) 
             <TouchableOpacity
                 onPress={onPress2}
                 style={{
-                    borderColor: colors.whiteSecondary, borderWidth: 2, borderRadius: 10,
+                    borderColor: isDarkMode ? colors.whiteSecondary : colors.whiteSecondary, borderWidth: 2, borderRadius: 10,
                     paddingHorizontal: wp(10),
                     paddingVertical: hp(1),
                     borderWidth: 2,
@@ -55,7 +56,7 @@ const SocialButton = ({ Image1, Image2, Image3, onPress1, onPress2, onPress3 }) 
             <TouchableOpacity
                 onPress={onPress3}
                 style={{
-                    borderColor: colors.whiteSecondary, borderWidth: 2, borderRadius: 10,
+                    borderColor: isDarkMode ? colors.whiteSecondary : colors.whiteSecondary, borderWidth: 2, borderRadius: 10,
                     paddingHorizontal: wp(10),
                     paddingVertical: hp(1),
                     borderWidth: 2,

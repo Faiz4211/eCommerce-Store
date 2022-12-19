@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Image, View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Image, View, Text, FlatList, TouchableOpacity, ScrollView, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CustomHeader from '../components/CustomHeader';
 import colors from '../globalStyles/GlobalColor';
 import { products } from '../components/Data/Product';
 import CustomCard from '../components/CustomCard';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItemToCart, addToWishlist } from '../redux/actions/Actions';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Main = () => {
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     const dispatch = useDispatch();
     const [categoryList, setCategoryList] = useState([]);
     const [tshirtList, setTshirtList] = useState([]);
@@ -35,7 +40,10 @@ const Main = () => {
     // const items = useSelector(state => state);
     // console.log(items)
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={{
+            flex: 1,
+            backgroundColor: backgroundStyle.backgroundColor
+        }}>
             <CustomHeader
                 headerText={'ECommerce Store'}
                 ModeText={'Mode'} />
@@ -64,7 +72,7 @@ const Main = () => {
                             >
                                 <Text style={{
                                     fontSize: hp('2%'),
-                                    color: colors.grey,
+                                    color: isDarkMode ? colors.white : colors.lightgrey,
                                     marginLeft: wp(4),
                                     marginRight: wp(4),
                                 }}>{item}</Text>
@@ -81,7 +89,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>New T-Shirts!</Text>
             </View>
@@ -115,7 +123,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>New Jeans!</Text>
             </View>
@@ -149,7 +157,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>Shoes List!</Text>
             </View>
@@ -184,7 +192,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>Jacket List!</Text>
             </View>
@@ -219,7 +227,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>Sliper List!</Text>
             </View>
@@ -253,7 +261,7 @@ const Main = () => {
                 <Text style={{
                     fontSize: hp('3%'),
                     fontWeight: '600',
-                    color: colors.grey,
+                    color: isDarkMode ? colors.white : colors.lightgrey,
                     marginLeft: wp(4),
                 }}>Trousers List!</Text>
             </View>

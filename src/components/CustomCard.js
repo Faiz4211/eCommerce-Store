@@ -1,17 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../globalStyles/GlobalColor';
 
 const CustomCard = ({ item, onAddToCart, onAddWishList }) => {
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
         <TouchableOpacity
             style={{
                 alignItems: 'center',
                 marginLeft: wp(4),
-                backgroundColor: colors.white,
                 borderRadius: 20,
-                backgroundColor: colors.white
+                backgroundColor: backgroundStyle.backgroundColor
 
             }}
         >
@@ -22,7 +26,7 @@ const CustomCard = ({ item, onAddToCart, onAddWishList }) => {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
                 }} />
-                <Text style={{ marginTop: hp(1), marginLeft: wp(4), fontSize: hp('2%'), color: colors.purple }}>{item.name}</Text>
+                <Text style={{ marginTop: hp(1), marginLeft: wp(4), fontSize: hp('2%'), color: isDarkMode ? colors.purple : colors.purple }}>{item.name}</Text>
 
                 <View style={{
                     flexDirection: 'row',
@@ -32,7 +36,7 @@ const CustomCard = ({ item, onAddToCart, onAddWishList }) => {
                     marginBottom: hp(2),
 
                 }}>
-                    <Text style={{ marginLeft: wp(4), fontSize: hp('2%'), color: colors.purple }}>{'₨ ' + item.price}</Text>
+                    <Text style={{ marginLeft: wp(4), fontSize: hp('2%'), color: isDarkMode ? colors.purple : colors.purple }}>{'₨ ' + item.price}</Text>
                     <TouchableOpacity
                         onPress={() => {
                             onAddToCart(item)

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../globalStyles/GlobalColor';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -10,6 +10,7 @@ import CustomButton from '../components/CustomButton';
 import SocialButton from '../components/SocialButton';
 import CustomNavLink from '../components/CustomNavLink';
 import { AuthContext } from '../Context/AuthProvider';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Signup = () => {
     const { register, googleLogin } = useContext(AuthContext);
@@ -19,15 +20,29 @@ const Signup = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const navigation = useNavigation();
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
-        <View style={styles.container}>
+        <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: backgroundStyle.backgroundColor
+        }}>
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 style={styles.InnerView}>
                 <View style={styles.ImageView}>
                     <Image style={styles.SignUpImage} source={require('../assets/images/registration.png')} />
                 </View>
-                <Text style={styles.SignupText}>Welcome to Signup!</Text>
+                <Text style={{
+                    fontSize: hp('3%'),
+                    fontWeight: '600',
+                    color: isDarkMode ? colors.white : colors.grey,
+                    marginTop: hp(5),
+                    marginBottom: hp(4),
+                }}>Welcome to Signup!</Text>
                 <InputField
                     value={name}
                     onChangeText={setName}
@@ -86,7 +101,11 @@ const Signup = () => {
                     onPress={() => register(email, password)}
                     buttonText={'Signup'}
                 />
-                <Text style={styles.RefText}>Or, Signup with ....</Text>
+                <Text style={{
+                    color: isDarkMode ? colors.white : colors.grey,
+                    textAlign: 'center',
+                    marginBottom: hp(4)
+                }}>Or, Signup with ....</Text>
                 <SocialButton
                     onPress1={() => googleLogin()}
                 />
@@ -100,17 +119,6 @@ const Signup = () => {
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-    SignupText: {
-        fontSize: hp('3%'),
-        fontWeight: '600',
-        color: colors.grey,
-        marginTop: hp(5),
-        marginBottom: hp(4),
-    },
     InnerView: {
         paddingHorizontal: wp(8),
     },
@@ -123,23 +131,6 @@ const styles = StyleSheet.create({
         width: wp('75%'),
         transform: [{ rotate: '-5deg' }]
     },
-    RefText: {
-        textAlign: 'center',
-        color: colors.grey,
-        marginBottom: hp(4)
-    },
-    CalendarView: {
-        flexDirection: 'row',
-        borderBottomColor: colors.whitePrimary,
-        borderBottomWidth: 1,
-        paddingBottom: 8,
-        marginBottom: hp(4)
-    },
-    DOBText: {
-        color: colors.lightgrey,
-        marginLeft: wp(1.4),
-    },
-
 })
 
 export default Signup;

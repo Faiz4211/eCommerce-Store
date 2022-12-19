@@ -7,7 +7,6 @@ import MyAdress from '../screens/MyAdress';
 import AddAdress from '../screens/AddAdress';
 import TabStack from './TabStack';
 
-
 const Stack = createNativeStackNavigator();
 
 function AuthStack() {
@@ -22,6 +21,7 @@ function AuthStack() {
             <Stack.Screen name="AddAdress" component={AddAdress} />
             <Stack.Screen name="Main" component={TabStack} />
         </Stack.Navigator>
+
     );
 }
 

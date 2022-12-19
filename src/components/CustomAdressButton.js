@@ -1,14 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../globalStyles/GlobalColor';
 
 const CustomAdressButton = ({ adressText, onPress }) => {
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
         <TouchableOpacity
             onPress={onPress}
             style={styles.AdressButton}>
-            <Text style={styles.Text}>{adressText}</Text>
+            <Text style={{
+                fontSize: hp('2%'),
+                fontWeight: '500',
+                color: isDarkMode ? colors.white : colors.lightgrey
+            }}>{adressText}</Text>
         </TouchableOpacity>
     )
 }
@@ -22,8 +31,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     Text: {
-        fontSize: hp('2%'),
-        fontWeight: '500'
 
     }
 

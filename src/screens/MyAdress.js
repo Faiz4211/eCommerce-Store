@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, useColorScheme, View, } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
@@ -7,14 +7,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import colors from '../globalStyles/GlobalColor';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { removeAdress } from '../redux/actions/Actions';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-let addressList = [];
+// let addressList = [];
 const MyAdress = () => {
     const navigation = useNavigation();
     const isFocused = useIsFocused();
     const addressList = useSelector(state => state.AdressReducers);
     console.log(addressList);
     const dispatch = useDispatch();
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
 
     return (
         <View style={{ flex: 1 }}>
@@ -64,7 +69,7 @@ const MyAdress = () => {
                                     padding: 7,
 
                                 }}>
-                                <AntDesign name='delete' size={30} />
+                                <AntDesign name='delete' size={30} color={isDarkMode ? colors.white : colors.lightgrey} />
                             </TouchableOpacity>
                         </View>
                     )
@@ -74,8 +79,6 @@ const MyAdress = () => {
 
     )
 }
-
-
 const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',

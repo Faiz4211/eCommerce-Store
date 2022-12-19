@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { AuthProvider } from './Context/AuthProvider';
 import AppNav from './Navigation/AppNav';
 

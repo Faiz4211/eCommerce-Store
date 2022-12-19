@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, useColorScheme } from 'react-native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -9,7 +9,9 @@ import { useState } from 'react';
 import CustomButton from '../components/CustomButton';
 import { useDispatch } from 'react-redux';
 import { addAdress } from '../redux/actions/Actions';
+import colors from '../globalStyles/GlobalColor';
 import { useNavigation } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const AddAdress = () => {
     const [city, setCity] = useState('');
@@ -17,11 +19,15 @@ const AddAdress = () => {
     const [pin, setPin] = useState('');
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
-        <View style={{ flex: 1, }}>
+        <View style={{ flex: 1, backgroundColor: backgroundStyle.backgroundColor }}>
             <View style={styles.InnerView}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btn}>
-                    <Ionicons name='arrow-back' size={25} />
+                    <Ionicons name='arrow-back' size={25} color={isDarkMode ? colors.white : colors.lightgrey} />
                 </TouchableOpacity>
                 <InputField
                     value={city}
@@ -29,7 +35,7 @@ const AddAdress = () => {
                     label={'City Name'}
                     icon={<FontAwesome5 style={{
                         marginRight: wp(3),
-                    }} name='city' size={20} color={colors.lightgrey} />}
+                    }} name='city' size={20} color={isDarkMode ? colors.white : colors.lightgrey} />}
                 />
                 <InputField
                     value={building}
@@ -37,7 +43,7 @@ const AddAdress = () => {
                     label={'Building Name'}
                     icon={<FontAwesome5 style={{
                         marginRight: wp(3),
-                    }} name='chart-area' size={20} color={colors.lightgrey} />}
+                    }} name='chart-area' size={20} color={isDarkMode ? colors.white : colors.lightgrey} />}
                 />
                 <InputField
                     value={pin}
@@ -46,15 +52,14 @@ const AddAdress = () => {
                     keyboardType={'number-pad'}
                     icon={<Entypo style={{
                         marginRight: wp(3),
-                    }} name='pin' size={20} color={colors.lightgrey} />}
+                    }} name='pin' size={20} color={isDarkMode ? colors.white : colors.lightgrey} />}
 
                 />
-
                 <CustomButton
                     onPress={() => {
                         if (city !== '' && building !== '' && pin !== '') {
                             dispatch(addAdress({ city, building, pin }));
-                            navigation.goBack();
+                            navigation.navigate('MyAdress');
                         }
                     }}
                     buttonText={'Save Adress'}
@@ -79,10 +84,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
     },
     btn: {
-        width: wp('10%'),
-        height: hp('10%'),
-        justifyContent: 'center',
-        alignItems: 'center',
+        marginBottom: hp(4)
     },
 })
 

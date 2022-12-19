@@ -12,8 +12,6 @@ const Splash = () => {
             navigation.navigate('Login')
         }, 3000);
     }, [])
-
-
     return (
         <View style={styles.container}>
             <LottieView style={styles.SplashImage}

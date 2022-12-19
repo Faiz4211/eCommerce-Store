@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
 import { addItemToCart, removeFromWishlist } from '../redux/actions/Actions';
@@ -7,9 +8,15 @@ import { addItemToCart, removeFromWishlist } from '../redux/actions/Actions';
 const WishList = () => {
     const cartData = useSelector(state => state.Reducers2);
     const dispatch = useDispatch();
-
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
-        <View style={styles.container}>
+        <View style={{
+            flex: 1,
+            backgroundColor: backgroundStyle.backgroundColor
+        }}>
             {cartData.length > 0 ? (
                 <FlatList
                     data={cartData}
@@ -30,8 +37,6 @@ const WishList = () => {
                                     }}
                                 />
                             </View>
-
-
                         )
                     }}
                 />

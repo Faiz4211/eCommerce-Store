@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, useColorScheme } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
 import { addToWishlist, removeFromCart } from '../redux/actions/Actions';
@@ -7,13 +7,21 @@ import CustomButton from '../components/CustomButton';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
 import RazorpayCheckout from 'react-native-razorpay';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Cart = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const cartData = useSelector(state => state.Reducers);
     const dispatch = useDispatch();
+    const isDarkMode = useColorScheme() === 'dark';
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    };
     return (
-        <View style={styles.container}>
+        <View style={{
+            flex: 1,
+            backgroundColor: backgroundStyle.backgroundColor
+        }}>
             {cartData.length > 0 ? (
                 <FlatList
                     data={cartData}
@@ -39,7 +47,6 @@ const Cart = () => {
             {cartData.length > 0 ? (<View>
                 <View style={styles.btnView}>
                     <CustomButton
-
                         onPress={() => {
                             var options = {
                                 description: 'Credits towards consultation',
