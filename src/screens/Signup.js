@@ -11,9 +11,10 @@ import SocialButton from '../components/SocialButton';
 import CustomNavLink from '../components/CustomNavLink';
 import { AuthContext } from '../Context/AuthProvider';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AppLoader from '../components/AppLoader';
 
 const Signup = () => {
-    const { register, googleLogin } = useContext(AuthContext);
+    const { register, googleLogin, pending } = useContext(AuthContext);
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
@@ -97,6 +98,7 @@ const Signup = () => {
                     }
                     inputType="password"
                 />
+                {pending ? <AppLoader /> : null}
                 <CustomButton
                     onPress={() => register(email, password)}
                     buttonText={'Signup'}

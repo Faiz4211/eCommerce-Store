@@ -11,12 +11,13 @@ import SocialButton from '../components/SocialButton';
 import CustomNavLink from '../components/CustomNavLink';
 import { AuthContext } from '../Context/AuthProvider';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AppLoader from '../components/AppLoader';
 
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const navigation = useNavigation();
-    const { login, googleLogin } = useContext(AuthContext);
+    const { login, googleLogin, pending } = useContext(AuthContext);
     const isDarkMode = useColorScheme() === 'dark';
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -61,6 +62,7 @@ const Login = () => {
                         />
                     }
                 />
+                {pending ? <AppLoader /> : null}
                 <CustomButton
                     onPress={() => { login(email, password) }}
                     buttonText={'Login'}

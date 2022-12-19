@@ -13,14 +13,18 @@ export const AuthProvider = ({ children }) => {
         });
     })
     const [user, setUser] = useState(null);
+    const [pending, setPending] = useState(false);
 
     return (
         <AuthContext.Provider
             value={{
                 user,
                 setUser,
+                pending,
+                setPending,
 
                 login: async (email, password) => {
+                    setPending(true)
                     try {
                         if (email == null || password == null) {
                             // alert('opps!')
@@ -46,6 +50,7 @@ export const AuthProvider = ({ children }) => {
                             );
                         }
                     }
+                    setPending(false);
                 },
 
                 googleLogin: async () => {
@@ -66,6 +71,7 @@ export const AuthProvider = ({ children }) => {
                 },
 
                 register: async (email, password) => {
+                    setPending(true)
                     try {
                         if (email == null || password == null) {
                             // alert('Nikal beta')
@@ -90,15 +96,18 @@ export const AuthProvider = ({ children }) => {
                             );
                         }
                     }
+                    setPending(false)
                 },
 
                 logout: async () => {
+                    setPending(true)
                     try {
                         await auth().signOut();
                     }
                     catch (logoutError) {
                         console.log(logoutError)
                     }
+                    setPending(false)
                 }
             }}
         >

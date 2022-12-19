@@ -8,9 +8,10 @@ import CustomAdressButton from '../components/CustomAdressButton';
 import colors from '../globalStyles/GlobalColor';
 import { AuthContext } from '../Context/AuthProvider';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AppLoader from '../components/AppLoader';
 
 const Account = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout, pending } = useContext(AuthContext);
     console.log('This is user detail', user);
     const navigation = useNavigation();
     const isDarkMode = useColorScheme() === 'dark';
@@ -49,6 +50,7 @@ const Account = () => {
                 <CustomAdressButton
                     adressText={'Offers'}
                 />
+                {pending ? <AppLoader /> : null}
                 <View style={{
                     marginTop: hp(4)
                 }}>
