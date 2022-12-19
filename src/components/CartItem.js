@@ -91,7 +91,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                             alignItems: 'center',
                             position: 'absolute',
                             top: 5,
-                            right: 12,
+                            right: 15,
                         }}
                         onPress={() => {
                             onRemoveFromWishlist()
@@ -114,7 +114,7 @@ const CartItem = ({ item, onRemoveItem, onAddWishList, onRemoveFromWishlist, isW
                             alignItems: 'center',
                             position: 'absolute',
                             top: 5,
-                            right: 12,
+                            right: 15,
 
                         }}
                         onPress={() => {
