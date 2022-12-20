@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, useColorScheme, View, } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import colors from '../globalStyles/GlobalColor';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -12,7 +12,6 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 // let addressList = [];
 const MyAdress = () => {
     const navigation = useNavigation();
-    const isFocused = useIsFocused();
     const addressList = useSelector(state => state.AdressReducers);
     console.log(addressList);
     const dispatch = useDispatch();
