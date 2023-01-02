@@ -62,11 +62,14 @@ const Login = () => {
                         />
                     }
                 />
-                {pending ? <AppLoader /> : null}
-                <CustomButton
-                    onPress={() => { login(email, password) }}
-                    buttonText={'Login'}
-                />
+
+                {pending ? <AppLoader /> :
+                    <CustomButton
+                        onPress={() => { login(email, password) }}
+                        buttonText={'Login'}
+                    />
+                }
+
                 <Text style={{
                     color: isDarkMode ? colors.white : colors.grey,
                     textAlign: 'center',

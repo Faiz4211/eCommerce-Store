@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Alert, Modal, StyleSheet, View } from "react-native";
 import LottieView from 'lottie-react-native';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 const AppLoader = () => {
     useEffect(() => {

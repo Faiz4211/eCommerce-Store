@@ -98,11 +98,13 @@ const Signup = () => {
                     }
                     inputType="password"
                 />
-                {pending ? <AppLoader /> : null}
-                <CustomButton
-                    onPress={() => register(email, password)}
-                    buttonText={'Signup'}
-                />
+                {pending ? <AppLoader /> :
+                    <CustomButton
+                        onPress={() => register(email, password)}
+                        buttonText={'Signup'}
+                    />
+                }
+
                 <Text style={{
                     color: isDarkMode ? colors.white : colors.grey,
                     textAlign: 'center',

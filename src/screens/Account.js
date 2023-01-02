@@ -50,16 +50,16 @@ const Account = () => {
                 <CustomAdressButton
                     adressText={'Offers'}
                 />
-                {pending ? <AppLoader /> : null}
-                <View style={{
-                    marginTop: hp(4)
-                }}>
-                    <CustomButton
-                        onPress={() => logout()}
-                        buttonText={'Sign Out'}
-                    />
-                </View>
-
+                {pending ? <AppLoader /> :
+                    <View style={{
+                        marginTop: hp(4)
+                    }}>
+                        <CustomButton
+                            onPress={() => logout()}
+                            buttonText={'Sign Out'}
+                        />
+                    </View>
+                }
             </View>
         </View >
     )
